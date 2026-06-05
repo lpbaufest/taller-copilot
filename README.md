@@ -39,6 +39,9 @@ Este repositorio incluye una aplicación Web API en `/backend` construida con **
 
 ```bash
 cd /tmp/workspace/lpbaufest/taller-copilot/backend
+export JWT_SECRET_KEY="cambia-esta-clave"
+export ADMIN_USERNAME="admin"
+export ADMIN_PASSWORD="admin123"
 poetry install
 poetry run uvicorn app.main:app --reload
 ```
@@ -52,6 +55,7 @@ La API queda disponible en:
 
 ```bash
 cd /tmp/workspace/lpbaufest/taller-copilot
+export JWT_SECRET_KEY="cambia-esta-clave"
 docker compose up --build
 ```
 
@@ -122,5 +126,7 @@ curl -X POST http://127.0.0.1:8000/token/refresh \
 ## Variables de entorno
 
 - `JWT_SECRET_KEY`: clave utilizada para firmar los tokens JWT.
+- `ADMIN_USERNAME`: usuario permitido para el login. Para este caso de uso usar `admin`.
+- `ADMIN_PASSWORD`: contraseña permitida para el login. Para este caso de uso usar `admin123`.
 
-> Nota: el valor por defecto incluido es solo para demostración. En producción debe configurarse un secreto seguro.
+> Nota: `JWT_SECRET_KEY` es obligatoria. En producción debe configurarse un secreto robusto y no reutilizado.

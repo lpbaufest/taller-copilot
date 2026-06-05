@@ -11,7 +11,15 @@ from pydantic import AliasChoices, BaseModel, Field
 ACCESS_TOKEN_EXPIRE_SECONDS = 300
 REFRESH_TOKEN_EXPIRE_SECONDS = 3600
 ALGORITHM = "HS256"
-SECRET_KEY = os.getenv("JWT_SECRET_KEY", "change-this-secret-in-production")
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
+if not SECRET_KEY:
+    raise RuntimeError("JWT_SECRET_KEY debe estar definido")
+
+if not ADMIN_USERNAME or not ADMIN_PASSWORD:
+    raise RuntimeError("ADMIN_USERNAME y ADMIN_PASSWORD deben estar definidos")
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -25,9 +33,9 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 fake_user_db = {
-    "admin": {
-        "username": "admin",
-        "hashed_password": get_password_hash("admin123"),
+    ADMIN_USERNAME: {
+        "username": ADMIN_USERNAME,
+        "hashed_password": get_password_hash(ADMIN_PASSWORD),
     }
 }
 
