@@ -16,7 +16,7 @@ ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 if not SECRET_KEY:
-    raise RuntimeError("JWT_SECRET_KEY debe estar definido")
+    raise RuntimeError("JWT_SECRET_KEY debe estar definida")
 
 if not ADMIN_USERNAME or not ADMIN_PASSWORD:
     raise RuntimeError("ADMIN_USERNAME y ADMIN_PASSWORD deben estar definidos")
