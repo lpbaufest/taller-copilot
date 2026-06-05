@@ -1,0 +1,9 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: fastapi-jwt-backend
+    environment:
+      JWT_SECRET_KEY: change-this-secret-in-production
+    ports:
+      - "8000:8000"
