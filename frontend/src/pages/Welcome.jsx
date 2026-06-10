@@ -107,6 +107,73 @@ export default function Welcome() {
               body="La autenticación usa FastAPI + JWT. El access token expira en 300 segundos tras el login."
             />
           </div>
+
+          {/* Microsoft Certifications 2026 */}
+          <div style={styles.certSection}>
+            <div style={styles.certSectionHeader}>
+              <div style={styles.certBadge}>Microsoft Learn</div>
+              <h2 style={styles.certHeading}>Certificaciones Microsoft <span style={styles.headingAccent}>2026</span></h2>
+              <p style={styles.certDescription}>
+                Valida tus conocimientos y habilidades con las certificaciones más relevantes de Microsoft para el 2026.
+              </p>
+            </div>
+            <div style={styles.certGrid}>
+              <CertCard
+                icon="☁️"
+                code="AZ-900"
+                title="Azure Fundamentals"
+                level="Principiante"
+                levelColor="#dbeafe"
+                body="Demuestra conocimiento fundamental de conceptos de nube, servicios básicos de Azure y características de gestión y gobernanza."
+                url="https://learn.microsoft.com/credentials/certifications/azure-fundamentals/"
+              />
+              <CertCard
+                icon="🤖"
+                code="AI-900"
+                title="Azure AI Fundamentals"
+                level="Principiante"
+                levelColor="#dbeafe"
+                body="Demuestra conceptos de inteligencia artificial y servicios de Azure AI, incluidos Machine Learning y servicios cognitivos."
+                url="https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/"
+              />
+              <CertCard
+                icon="🏢"
+                code="MS-900"
+                title="Microsoft 365 Fundamentals"
+                level="Principiante"
+                levelColor="#dbeafe"
+                body="Demuestra conocimiento de los servicios cloud de Microsoft 365, opciones de licenciamiento y capacidades de la plataforma."
+                url="https://learn.microsoft.com/credentials/certifications/microsoft-365-fundamentals/"
+              />
+              <CertCard
+                icon="⚙️"
+                code="AZ-204"
+                title="Azure Developer Associate"
+                level="Intermedio"
+                levelColor="#fef9c3"
+                body="Desarrolla y despliega soluciones cloud en Azure. Examen actualizado en enero 2026 con nuevas competencias de integración."
+                url="https://learn.microsoft.com/credentials/certifications/azure-developer/"
+              />
+              <CertCard
+                icon="🔒"
+                code="AZ-500"
+                title="Azure Security Engineer Associate"
+                level="Intermedio"
+                levelColor="#fef9c3"
+                body="Implementa controles de seguridad y protección contra amenazas en Azure. Examen actualizado en enero 2026."
+                url="https://learn.microsoft.com/credentials/certifications/azure-security-engineer/"
+              />
+              <CertCard
+                icon="🧠"
+                code="AI-102"
+                title="Azure AI Engineer Associate"
+                level="Intermedio"
+                levelColor="#fef9c3"
+                body="Diseña e implementa soluciones de IA en Azure, incluyendo Azure OpenAI Service, Azure AI Search y Foundry Tools."
+                url="https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/"
+              />
+            </div>
+          </div>
         </main>
       </div>
     </div>
@@ -135,6 +202,23 @@ function InfoCard({ title, body }) {
     <div style={styles.infoCard}>
       <h3 style={styles.infoTitle}>{title}</h3>
       <p style={styles.infoBody}>{body}</p>
+    </div>
+  );
+}
+
+function CertCard({ icon, code, title, level, levelColor, body, url }) {
+  return (
+    <div style={styles.certCard}>
+      <div style={styles.certCardTop}>
+        <span style={styles.certIcon}>{icon}</span>
+        <span style={{ ...styles.certLevel, backgroundColor: levelColor }}>{level}</span>
+      </div>
+      <p style={styles.certCode}>{code}</p>
+      <h3 style={styles.certTitle}>{title}</h3>
+      <p style={styles.certBody}>{body}</p>
+      <a href={url} target="_blank" rel="noopener noreferrer" style={styles.certLink}>
+        Ver certificación →
+      </a>
     </div>
   );
 }
@@ -325,5 +409,107 @@ const styles = {
     fontWeight: 300,
     color: 'var(--color-text-primary)',
     lineHeight: '22.75px',
+  },
+  certSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
+  },
+  certSectionHeader: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  },
+  certBadge: {
+    display: 'inline-flex',
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    fontSize: '12px',
+    fontWeight: 500,
+    letterSpacing: '0.35px',
+    color: 'var(--color-text-primary)',
+    backgroundColor: 'var(--color-surface)',
+    borderRadius: '9999px',
+    padding: '4px 12px',
+  },
+  certHeading: {
+    fontSize: '28px',
+    fontWeight: 500,
+    color: 'var(--color-text-secondary)',
+    letterSpacing: '-0.025em',
+    lineHeight: '1.2',
+    margin: 0,
+  },
+  certDescription: {
+    fontSize: '14px',
+    fontWeight: 300,
+    color: 'var(--color-text-primary)',
+    maxWidth: '520px',
+    lineHeight: '22.75px',
+    margin: 0,
+  },
+  certGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '12px',
+  },
+  certCard: {
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    border: '0.8px solid rgba(255,255,255,0.8)',
+    borderRadius: '16px',
+    padding: '24px',
+    boxShadow: 'rgba(0,0,0,0) 0px 0px 0px 0px, rgba(0,0,0,0) 0px 0px 0px 0px, rgba(0,0,0,0.04) 0px 8px 30px 0px',
+    backdropFilter: 'blur(4px)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  },
+  certCardTop: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '4px',
+  },
+  certIcon: {
+    fontSize: '24px',
+  },
+  certLevel: {
+    fontSize: '11px',
+    fontWeight: 500,
+    letterSpacing: '0.35px',
+    color: 'var(--color-text-secondary)',
+    borderRadius: '9999px',
+    padding: '3px 10px',
+  },
+  certCode: {
+    fontSize: '11px',
+    fontWeight: 500,
+    letterSpacing: '0.5px',
+    color: 'var(--color-primary)',
+    margin: 0,
+    textTransform: 'uppercase',
+  },
+  certTitle: {
+    fontSize: '14px',
+    fontWeight: 500,
+    color: 'var(--color-text-secondary)',
+    letterSpacing: '0.35px',
+    margin: 0,
+  },
+  certBody: {
+    fontSize: '13px',
+    fontWeight: 300,
+    color: 'var(--color-text-primary)',
+    lineHeight: '20px',
+    margin: 0,
+    flexGrow: 1,
+  },
+  certLink: {
+    fontSize: '13px',
+    fontWeight: 500,
+    color: 'var(--color-primary)',
+    textDecoration: 'none',
+    letterSpacing: '0.35px',
+    marginTop: '4px',
   },
 };
